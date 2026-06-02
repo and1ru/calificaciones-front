@@ -15,5 +15,9 @@ export const routes = createBrowserRouter([
     {
         path: "dashboard",
         element: <DashboardPage/>
+    },
+    {
+        path: "clase/:id",
+        element: <></>
     }
 ])
