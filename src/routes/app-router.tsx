@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { HomePage } from "../pages/home-page";
 import { LoginPage } from "../pages/login-page";
 import { DashboardPage } from "../pages/dashboard-page";
+import { ClasePage } from "../pages/clase-page";
 
 export const routes = createBrowserRouter([
     {
@@ -18,6 +19,6 @@ export const routes = createBrowserRouter([
     },
     {
         path: "clase/:id",
-        element: <></>
+        element: <ClasePage/>
     }
 ])
