@@ -11,6 +11,7 @@ export const GroupComponent = ({id, group, subject}:Props) => {
     function handleNavegar(id:number) {
         navegar(`/clase/${id}`)
     }
+    
   return (
     <div
     onClick={() => handleNavegar(id)}

@@ -4,6 +4,8 @@ import { LoginPage } from "../pages/login-page";
 import { DashboardPage } from "../pages/dashboard-page";
 import { ClasePage } from "../pages/clase-page";
 import { NotasPage } from "../pages/notas-page";
+import { AnotacionPage } from "../pages/anotacion-page";
+import { VerAnotacionPage } from "../pages/ver-anotacion-page";
 
 export const routes = createBrowserRouter([
     {
@@ -25,5 +27,13 @@ export const routes = createBrowserRouter([
     {
         path: "notas/:id",
         element: <NotasPage/>
+    },
+    {
+        path: "anotacion",
+        element: <AnotacionPage/>
+    },
+    {
+        path: "ver-anotacion",
+        element: <VerAnotacionPage/>
     }
 ])

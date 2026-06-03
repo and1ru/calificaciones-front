@@ -23,7 +23,7 @@ export const ClasePage = () => {
 
     const clase = teacherGroups.find((clase) => clase.id === +id)
 
-    if (!clase) return <p>clase no encontrada</p>  
+    if (clase === undefined) return <p>clase no encontrada</p>  
 
     // filtra que los estudiantes tienen que tener el mismo id que la clase
     const estudiantesFilter = estudiantes.filter((estudiante) => estudiante.id_grupo === clase.id)
@@ -34,7 +34,7 @@ export const ClasePage = () => {
     return (
         <>
             <HeaderComponent></HeaderComponent>
-            <main>
+            <main className="p-8">
                 <h1 className="text-center text-2xl font-bold">CLASE: {clase?.group}</h1>
                 <section>
                     <button className="bg-gray-800 p-2 rounded-lg text-white " onClick={openDialog}>Agregar Nota</button>
@@ -51,16 +51,16 @@ export const ClasePage = () => {
                     <table className="border">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                { titles && titles.map((estudiante) => (<th>{estudiante.title}</th>))}
+                                <th className="boder-1">Nombre</th>
+                                { titles && titles.map((estudiante) => (<th className="border text-center p-2">{estudiante.title}</th>))}
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 estudiantes.map((estudiante) => (
                                     <tr key={estudiante.id}>
-                                        <td>{estudiante.nombre}</td>
-                                        {estudiante.notas.map((nota) => (<td>{nota.nota}</td>))}
+                                        <td className="border text-center p-2">{estudiante.nombre}</td>
+                                        {estudiante.notas.map((nota) => (<td className="border text-center p-2">{nota.nota}</td>))}
                                     </tr>
                                 ))
                             }
