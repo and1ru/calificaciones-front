@@ -36,6 +36,10 @@ export const DashboardPage = () => {
         navegar(`/anotacion`,{replace:true})
     }
 
+    function goToVerAnotacion() {
+        navegar(`/ver-anotacion`,{replace:true})
+    }
+
     return (
         <>
             <HeaderComponent />
@@ -48,7 +52,7 @@ export const DashboardPage = () => {
                     <button 
                     onClick={() => goToNotas(1)}
                     className="bg-gray-800 text-white p-2 rounded-lg mr-5">Ver notas</button>
-                    <button className="bg-gray-800 text-white p-2 rounded-lg">Ver anotaciones</button>
+                    <button className="bg-gray-800 text-white p-2 rounded-lg" onClick={goToVerAnotacion}>Ver anotaciones</button>
                     <button className="bg-gray-800 text-white p-2 rounded-lg" onClick={goToAnotacion}>hacer anotaciones</button>
                 </section>
             </main>
