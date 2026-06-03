@@ -3,6 +3,7 @@ import { HomePage } from "../pages/home-page";
 import { LoginPage } from "../pages/login-page";
 import { DashboardPage } from "../pages/dashboard-page";
 import { ClasePage } from "../pages/clase-page";
+import { NotasPage } from "../pages/notas-page";
 
 export const routes = createBrowserRouter([
     {
@@ -20,5 +21,9 @@ export const routes = createBrowserRouter([
     {
         path: "clase/:id",
         element: <ClasePage/>
+    },
+    {
+        path: "notas/:id",
+        element: <NotasPage/>
     }
 ])

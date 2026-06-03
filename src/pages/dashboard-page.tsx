@@ -20,11 +20,17 @@ general:
 filtros de 1, 2 semestre / periodo
 */
 
+import { useNavigate } from "react-router-dom";
 import { GroupComponent } from "../components/group-component";
 import { HeaderComponent } from "../components/header-component";
 import { teacherGroups } from "../helper/grupos";
 
 export const DashboardPage = () => {
+    const navegar = useNavigate()
+
+    function goToNotas(id:number) {
+        navegar(`/notas/${id}`,{replace:true})
+    }
 
     return (
         <>
@@ -33,6 +39,12 @@ export const DashboardPage = () => {
                 <h1>Hola, Nombre</h1>
                 <section className="grid grid-cols-3 gap-5">
                     { teacherGroups.map((group) => (<GroupComponent group={group.group} id={group.id} subject={group.subject}/>))}
+                </section>
+                <section>
+                    <button 
+                    onClick={() => goToNotas(1)}
+                    className="bg-gray-800 text-white p-2 rounded-lg mr-5">Ver notas</button>
+                    <button className="bg-gray-800 text-white p-2 rounded-lg">Ver anotaciones</button>
                 </section>
             </main>
         </>
