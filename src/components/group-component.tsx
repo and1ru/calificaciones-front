@@ -1,23 +1,32 @@
 import { useNavigate } from "react-router-dom";
 
-interface Props{
-    id:number;
-    group:string;
-    subject:string;
+interface Props {
+  id: number;
+  subject: string;
 }
-export const GroupComponent = ({id, group, subject}:Props) => {
-    const navegar = useNavigate()
 
-    function handleNavegar(id:number) {
-        navegar(`/clase/${id}`)
-    }
-    
+export const GroupComponent = ({ id, subject }: Props) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/clase/${id}`);
+  };
+
   return (
     <div
-    onClick={() => handleNavegar(id)}
-    key={id} className="shadow-gray-300 shadow-lg rounded-lg p-2 cursor-pointer">
-        <p>{group}</p>
-        <p>{subject}</p>
+      onClick={handleNavigate}
+      className="cursor-pointer rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+    >
+      <h2 className="text-lg font-semibold text-gray-800">
+        {subject}
+      </h2>
+
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-sm text-gray-500">Promedio</span>
+        <span className="rounded-full bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-800">
+          3.0
+        </span>
+      </div>
     </div>
   );
 };

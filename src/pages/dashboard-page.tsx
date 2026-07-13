@@ -26,36 +26,60 @@ import { HeaderComponent } from "../components/header-component";
 import { teacherGroups } from "../helper/grupos";
 
 export const DashboardPage = () => {
-    const navegar = useNavigate()
+  const navigate = useNavigate();
 
-    function goToNotas(id:number) {
-        navegar(`/notas/${id}`,{replace:true})
-    }
+  function goToNotas(id: number) {
+    navigate(`/notas/${id}`, { replace: true });
+  }
 
-    function goToAnotacion() {
-        navegar(`/anotacion`,{replace:true})
-    }
+  function goToAnotacion() {
+    navigate("/anotacion", { replace: true });
+  }
 
-    function goToVerAnotacion() {
-        navegar(`/ver-anotacion`,{replace:true})
-    }
+  function goToVerAnotacion() {
+    navigate("/ver-anotacion", { replace: true });
+  }
 
-    return (
-        <>
-            <HeaderComponent />
-            <main className="p-7">
-                <h1>Hola, Nombre</h1>
-                <section className="grid grid-cols-3 gap-5">
-                    { teacherGroups.map((group) => (<GroupComponent group={group.group} id={group.id} subject={group.subject}/>))}
-                </section>
-                <section>
-                    <button 
-                    onClick={() => goToNotas(1)}
-                    className="bg-gray-800 text-white p-2 rounded-lg mr-5">Ver notas</button>
-                    <button className="bg-gray-800 text-white p-2 rounded-lg" onClick={goToVerAnotacion}>Ver anotaciones</button>
-                    <button className="bg-gray-800 text-white p-2 rounded-lg" onClick={goToAnotacion}>hacer anotaciones</button>
-                </section>
-            </main>
-        </>
-    );
+  return (
+    <>
+      <HeaderComponent />
+
+      <main className="mx-auto max-w-7xl p-6">
+        <section className="mb-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Bienvenido, Andres
+          </h1>
+
+          <div className="mt-4 space-y-2 text-gray-600">
+            <p>
+              <span className="font-semibold text-gray-800">Institución:</span>{" "}
+              I.E Goku Super Saiyajin
+            </p>
+
+            <p>
+              <span className="font-semibold text-gray-800">Grupo:</span> 11-1
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div className="mb-5 flex items-center justify-between">
+            <h2 className="text-2xl font-semibold text-gray-800">
+              Mis materias
+            </h2>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {teacherGroups.map((group) => (
+              <GroupComponent
+                key={group.id}
+                id={group.id}
+                subject={group.subject}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
+  );
 };
