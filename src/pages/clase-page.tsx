@@ -1,73 +1,141 @@
 import { useRef } from "react";
+import { useParams } from "react-router-dom";
 import { HeaderComponent } from "../components/header-component";
 import { teacherGroups } from "../helper/grupos";
-import { useParams } from "react-router-dom";
 import { estudiantes } from "../helper/notas";
 
 export const ClasePage = () => {
-    const agregarNota = useRef<null | HTMLDialogElement>(null)
+  const agregarNota = useRef<HTMLDialogElement | null>(null);
 
-    function openDialog() {
-        if (!agregarNota) return
-        agregarNota.current?.showModal()
-    }
+  const { id } = useParams();
 
-    function closeDialog() {
-        if (!agregarNota) return
-        agregarNota.current?.close()
-    }
+  if (!id) return null;
 
-    const { id } = useParams()
+  const clase = teacherGroups.find((clase) => clase.id === Number(id));
 
-    if (!id) return
+  if (!clase) {
+    return <p className="p-8 text-center">Clase no encontrada.</p>;
+  }
 
-    const clase = teacherGroups.find((clase) => clase.id === +id)
+  const estudiantesFilter = estudiantes.filter(
+    (estudiante) => estudiante.id_grupo === clase.id
+  );
 
-    if (clase === undefined) return <p>clase no encontrada</p>  
+  const titles = estudiantesFilter[0]?.notas ?? [];
 
-    // filtra que los estudiantes tienen que tener el mismo id que la clase
-    const estudiantesFilter = estudiantes.filter((estudiante) => estudiante.id_grupo === clase.id)
+  function openDialog() {
+    agregarNota.current?.showModal();
+  }
 
-    // obtiene el primer estudiante y si no hay notas entonces vacio
-    const titles = estudiantesFilter[0].notas || []
+  function closeDialog() {
+    agregarNota.current?.close();
+  }
 
-    return (
-        <>
-            <HeaderComponent></HeaderComponent>
-            <main className="p-8">
-                <h1 className="text-center text-2xl font-bold">CLASE: {clase?.group}</h1>
-                <section>
-                    <button className="bg-gray-800 p-2 rounded-lg text-white " onClick={openDialog}>Agregar Nota</button>
-                    <dialog className="backdrop:bg-black/50 w-70 h-100 rounded-lg m-auto p-6" ref={agregarNota}>
-                        <h2 className="text-center text-xl font-bold mb-5">Crear Nota</h2>
-                        <form>
-                            <input type="text" placeholder="nombre de tarea" />
-                        </form>
-                        <button onClick={closeDialog} className="bg-red-500 w-full p-2 rounded-lg font-bold">Cerrar</button>
-                    </dialog>
-                </section>
+  return (
+    <>
+      <HeaderComponent />
 
-                <section>
-                    <table className="border">
-                        <thead>
-                            <tr>
-                                <th className="boder-1">Nombre</th>
-                                { titles && titles.map((estudiante) => (<th className="border text-center p-2">{estudiante.title}</th>))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                estudiantes.map((estudiante) => (
-                                    <tr key={estudiante.id}>
-                                        <td className="border text-center p-2">{estudiante.nombre}</td>
-                                        {estudiante.notas.map((nota) => (<td className="border text-center p-2">{nota.nota}</td>))}
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
-                </section>
-            </main>
-        </>
-    );
+      <main className="mx-auto max-w-7xl p-6">
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-800">
+              {clase.subject}
+            </h1>
+
+            <p className="mt-1 text-gray-500">
+              Grupo {clase.group}
+            </p>
+          </div>
+
+          <button
+            onClick={openDialog}
+            className="rounded-lg bg-black px-5 py-2 font-medium text-white transition hover:bg-gray-800"
+          >
+            Agregar nota
+          </button>
+        </div>
+
+        <dialog
+          ref={agregarNota}
+          className="w-full max-w-md rounded-xl p-6 backdrop:bg-black/40"
+        >
+          <h2 className="mb-6 text-center text-xl font-bold">
+            Crear nota
+          </h2>
+
+          <form className="space-y-4">
+            <input
+              type="text"
+              placeholder="Nombre de la actividad"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-black"
+            />
+
+            <input
+              type="number"
+              placeholder="Porcentaje"
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 outline-none focus:border-black"
+            />
+
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-black py-2 font-medium text-white hover:bg-gray-800"
+            >
+              Guardar
+            </button>
+
+            <button
+              type="button"
+              onClick={closeDialog}
+              className="w-full rounded-lg bg-red-500 py-2 font-medium text-white hover:bg-red-600"
+            >
+              Cerrar
+            </button>
+          </form>
+        </dialog>
+
+        <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+          <table className="min-w-full">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="border-b px-4 py-3 text-left">
+                  Estudiante
+                </th>
+
+                {titles.map((nota) => (
+                  <th
+                    key={nota.title}
+                    className="border-b px-4 py-3 text-center"
+                  >
+                    {nota.title}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+
+            <tbody>
+              {estudiantesFilter.map((estudiante) => (
+                <tr
+                  key={estudiante.id}
+                  className="hover:bg-gray-50"
+                >
+                  <td className="border-b px-4 py-3 font-medium">
+                    {estudiante.nombre}
+                  </td>
+
+                  {estudiante.notas.map((nota) => (
+                    <td
+                      key={nota.title}
+                      className="border-b px-4 py-3 text-center"
+                    >
+                      {nota.nota}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </>
+  );
 };
