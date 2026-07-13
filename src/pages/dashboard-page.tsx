@@ -26,8 +26,8 @@ import { DashboardTeacherComponent } from "../components/dashboard-teacher-compo
 export const DashboardPage = () => {
   return (
     <>
-    <DashboardStudent/>
-    {/* <DashboardTeacherComponent/> */}
+    {/* <DashboardStudent/> */}
+    <DashboardTeacherComponent/>
     </>
   );
 };
