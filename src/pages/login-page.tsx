@@ -2,21 +2,20 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import type { loginType } from "../schemas/login-schema";
 import { InputComponent } from "../components/Input-component";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../schemas/login-schema";
+
 
 export const LoginPage = () => {
   const navigate = useNavigate();
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<loginType>({
+  const {handleSubmit,control,formState: { errors }} = useForm<loginType>({
     mode: "onBlur",
     defaultValues: {
       email: "",
-      name: "",
       password: "",
     },
+    resolver: zodResolver(loginSchema)
   });
 
   const handleForm: SubmitHandler<loginType> = (data) => {
@@ -25,6 +24,10 @@ export const LoginPage = () => {
 
   const handleGoToRegister = () => {
     navigate("/register", { replace: true });
+  };
+
+  const handleGoToDashboard = () => {
+    navigate("/private/dashboard", { replace: true });
   };
 
   return (
@@ -41,15 +44,6 @@ export const LoginPage = () => {
             Ingresa tus datos para continuar
           </p>
         </div>
-
-        <InputComponent
-          control={control}
-          error={errors.name}
-          label="Nombre"
-          name="name"
-          type="text"
-        />
-
         <InputComponent
           control={control}
           error={errors.email}
@@ -66,15 +60,8 @@ export const LoginPage = () => {
           type="password"
         />
 
-        <InputComponent
-          control={control}
-          error={errors.role}
-          label="Rol"
-          name="role"
-          type="text"
-        />
-
         <button
+        onClick={handleGoToDashboard}
           type="submit"
           className="w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800"
         >

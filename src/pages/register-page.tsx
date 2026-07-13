@@ -1,7 +1,8 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { InputComponent } from "../components/Input-component";
-import type { registerUserType } from "../schemas/register-schema";
+import { registerUserSchema, type registerUserType } from "../schemas/register-schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
@@ -13,7 +14,9 @@ export const RegisterPage = () => {
       email: "",
       name: "",
       password: "",
+      role: "student"
     },
+    resolver: zodResolver(registerUserSchema)
   });
 
   const handleForm: SubmitHandler<registerUserType> = (data) => {
@@ -25,7 +28,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4 py-10">
       <form
         onSubmit={handleSubmit(handleForm)}
         className="w-full max-w-md rounded-xl bg-white p-8 shadow-md space-y-5"
@@ -70,6 +73,15 @@ export const RegisterPage = () => {
           name="connfirmPassword"
           type="password"
         />
+
+          <InputComponent
+          control={control}
+          error={errors.role}
+          label="Rol"
+          name="role"
+          type="text"
+        />
+
         <button
           type="submit"
           className="w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800"
