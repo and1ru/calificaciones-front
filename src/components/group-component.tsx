@@ -5,11 +5,11 @@ interface Props {
   subject: string;
 }
 
-export const GroupComponent = ({ id, subject }: Props) => {
+export const TargetSubjectComponent = ({ id, subject }: Props) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/clase/${id}`);
+    navigate(`/private/subject/${id}`);
   };
 
   return (

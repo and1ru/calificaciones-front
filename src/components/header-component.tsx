@@ -6,12 +6,20 @@ export const HeaderComponent = () => {
   const handleSalir = () => {
     navigate("/login", {replace:true})
   }
+
+  const handleBack = () => {
+    navigate("/private/dashboard", {replace:true})
+  }
   return (
     <header className="border-b border-gray-200 bg-white shadow-sm">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <h1 className="text-lg font-bold text-gray-800">
-          Gestor de Estudios
-        </h1>
+        <div>
+          <button onClick={handleBack}>{"<-"}</button>
+          <h1 className="text-lg font-bold text-gray-800">
+            Gestor de Estudios
+          </h1>
+        </div>
+
 
         <button
         onClick={handleSalir}

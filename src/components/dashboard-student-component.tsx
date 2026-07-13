@@ -1,4 +1,4 @@
-import { GroupComponent } from "../components/group-component";
+import { TargetSubjectComponent } from "../components/group-component";
 import { HeaderComponent } from "../components/header-component";
 import { teacherGroups } from "../helper/grupos";
 
@@ -34,7 +34,7 @@ export const DashboardStudent = () => {
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {teacherGroups.map((group) => (
-              <GroupComponent
+              <TargetSubjectComponent
                 key={group.id}
                 id={group.id}
                 subject={group.subject}

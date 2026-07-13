@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
                 element: <ClasePage />
             },
             {
-                path: "notas/:id",
+                path: "subject/:id",
                 element: <NotasPage />
             },
             {
