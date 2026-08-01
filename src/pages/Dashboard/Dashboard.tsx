@@ -20,14 +20,14 @@ general:
 filtros de 1, 2 semestre / periodo
 */
 
-import { DashboardStudent } from "../components/dashboard-student-component";
-import { DashboardTeacherComponent } from "../components/dashboard-teacher-component";
+import { StudentDashboard } from "../../components/StudentDashboard/StudentDashboard";
+import { TeacherDashboard } from "../../components/TeacherDashboard/TeacherDashboard";
 
-export const DashboardPage = () => {
+export const Dashboard = () => {
   return (
     <>
-    {/* <DashboardStudent/> */}
-    <DashboardTeacherComponent/>
+    <StudentDashboard/>
+    {/* <TeacherDashboard/> */}
     </>
   );
 };

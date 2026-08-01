@@ -1,12 +1,11 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import type { loginType } from "../schemas/login-schema";
-import { InputComponent } from "../components/Input-component";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../schemas/login-schema";
+import { loginSchema, type loginType } from "../../schemas/login-schema";
+import { Input } from "../../components/Input/Input";
 
 
-export const LoginPage = () => {
+export const Login = () => {
   const navigate = useNavigate();
 
   const {handleSubmit,control,formState: { errors }} = useForm<loginType>({
@@ -44,7 +43,7 @@ export const LoginPage = () => {
             Ingresa tus datos para continuar
           </p>
         </div>
-        <InputComponent
+        <Input
           control={control}
           error={errors.email}
           label="Correo"
@@ -52,7 +51,7 @@ export const LoginPage = () => {
           type="email"
         />
 
-        <InputComponent
+        <Input
           control={control}
           error={errors.password}
           label="Contraseña"

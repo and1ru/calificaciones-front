@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { teacherGroups } from "../helper/grupos";
-import { estudiantes } from "../helper/notas";
+import { teacherGroups } from "../../helper/grupos";
+import { estudiantes } from "../../helper/notas";
 
-export const NotasTeacherComponent = () => {
+export const TeacherGrades = () => {
     const { id } = useParams();
 
     const clase = teacherGroups.find((clase) => clase.id === Number(id));

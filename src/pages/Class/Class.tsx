@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
-import { HeaderComponent } from "../components/header-component";
-import { teacherGroups } from "../helper/grupos";
-import { CreateNotaComponent } from "../components/crear-nota-component";
-import { NotasTeacherComponent } from "../components/notas-teacher-component";
+import { teacherGroups } from "../../helper/grupos";
+import { Header } from "../../components/Header/Header";
+import { CreateGrade } from "../../components/CreateGrade/CreateGrade";
+import { TeacherGrades } from "../../components/TeacherGrades/TeacherGrades";
 
-export const ClasePage = () => {
-
+export const Class = () => {
   const { id } = useParams();
 
   if (!id) return null;
@@ -16,11 +15,9 @@ export const ClasePage = () => {
     return <p className="p-8 text-center">Clase no encontrada.</p>;
   }
 
-
-
   return (
     <>
-      <HeaderComponent />
+      <Header />
       <main className="mx-auto max-w-7xl p-6">
         <div className="mb-8 flex items-center justify-between">
           <div>
@@ -32,12 +29,12 @@ export const ClasePage = () => {
               Grupo {clase.group}
             </p>
           </div>
-          <CreateNotaComponent/>
+          <CreateGrade/>
         </div>
 
         {/* asignar un componente para la asistencia */}
 
-        <NotasTeacherComponent/>
+        <TeacherGrades/>
       </main>
     </>
   );

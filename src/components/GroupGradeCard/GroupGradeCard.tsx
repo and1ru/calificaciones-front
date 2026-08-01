@@ -5,7 +5,7 @@ interface Props {
   subject: string;
 }
 
-export const TargetGroupComponent = ({ group, subject }: Props) => {
+export const GroupGradeCard = ({ group, subject }: Props) => {
       const navigate = useNavigate()
 
     function handleClick(){

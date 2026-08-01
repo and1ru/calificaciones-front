@@ -1,26 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage } from "../pages/home-page";
-import { LoginPage } from "../pages/login-page";
-import { DashboardPage } from "../pages/dashboard-page";
-import { ClasePage } from "../pages/clase-page";
-import { NotasPage } from "../pages/notas-page";
-import { AnotacionPage } from "../pages/anotacion-page";
-import { VerAnotacionPage } from "../pages/ver-anotacion-page";
-import { RegisterPage } from "../pages/register-page";
-import { RootPage } from "../pages/root";
+import { NotasPage } from "../pages/Grades/Grades";
+import { RootPage } from "../pages/Root/Root";
+import { Home } from "../pages/Home/Home";
+import { Login } from "../pages/Login/Login";
+import { Register } from "../pages/Register/Register";
+import { Dashboard } from "../pages/Dashboard/Dashboard";
+import { Class } from "../pages/Class/Class";
 
 export const routes = createBrowserRouter([
     {
         path: "",
-        element: <HomePage />
+        element: <Home />
     },
     {
         path: "login",
-        element: <LoginPage />
+        element: <Login />
     },
     {
         path: "register",
-        element: <RegisterPage />
+        element: <Register />
     },
     {
         path: "/private/",
@@ -28,25 +26,16 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: "dashboard",
-                element: <DashboardPage />
+                element: <Dashboard />
             },
             {
                 path: "clase/:id",
-                element: <ClasePage />
+                element: <Class />
             },
             {
                 path: "subject/:id",
                 element: <NotasPage />
             },
-            {
-                path: "anotacion",
-                element: <AnotacionPage />
-            },
-            {
-                path: "ver-anotacion",
-                element: <VerAnotacionPage />
-            }
-            
         ]
     },
 

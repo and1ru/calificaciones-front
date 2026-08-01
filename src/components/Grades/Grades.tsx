@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { students } from "../helper/notas2";
+import { students } from "../../helper/notas2";
 
-export const NotasComponent = () => {
+export const Grades = () => {
   const { id } = useParams();
 
   if (!id) return <p>No se encontró el id.</p>;

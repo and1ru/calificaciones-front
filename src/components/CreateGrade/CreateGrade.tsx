@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export const CreateNotaComponent = () => {
+export const CreateGrade = () => {
   const agregarNota = useRef<HTMLDialogElement | null>(null);
 
       function openDialog() {

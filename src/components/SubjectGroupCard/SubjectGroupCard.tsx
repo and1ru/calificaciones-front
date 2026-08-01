@@ -5,7 +5,7 @@ interface Props {
   subject: string;
 }
 
-export const TargetSubjectComponent = ({ id, subject }: Props) => {
+export const SubjectGroupCard = ({ id, subject }: Props) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {

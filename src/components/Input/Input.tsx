@@ -16,7 +16,7 @@ interface Props<T extends FieldValues> {
   placeholder?: string;
 }
 
-export const InputComponent = <T extends FieldValues>({
+export const Input = <T extends FieldValues>({
   type,
   name,
   label,

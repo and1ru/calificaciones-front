@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const HeaderComponent = () => {
+export const Header = () => {
   const navigate = useNavigate()
 
   const handleSalir = () => {

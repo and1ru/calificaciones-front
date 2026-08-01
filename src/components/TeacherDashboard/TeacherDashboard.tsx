@@ -1,10 +1,10 @@
-import { HeaderComponent } from "./header-component"
-import { TargetGroupComponent } from "./target-group-component"
+import { GroupGradeCard } from "../GroupGradeCard/GroupGradeCard"
+import { Header } from "../Header/Header"
 
-export const DashboardTeacherComponent = () => {
+export const TeacherDashboard = () => {
     return (
         <>
-          <HeaderComponent />
+          <Header />
           <main className="mx-auto max-w-7xl p-6">
             <section className="mb-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
               <h1 className="text-3xl font-bold text-gray-800">
@@ -26,10 +26,10 @@ export const DashboardTeacherComponent = () => {
                 </h2>
               </div>
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                <TargetGroupComponent group="11-1" subject="Matematicas"/>
-                <TargetGroupComponent group="11-1" subject="Matematicas"/>
-                <TargetGroupComponent group="11-1" subject="Matematicas"/>
-                <TargetGroupComponent group="11-1" subject="Matematicas"/>
+                <GroupGradeCard group="11-1" subject="Matematicas"/>
+                <GroupGradeCard group="11-1" subject="Matematicas"/>
+                <GroupGradeCard group="11-1" subject="Matematicas"/>
+                <GroupGradeCard group="11-1" subject="Matematicas"/>
               </div>
               
             </section>

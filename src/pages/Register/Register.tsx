@@ -1,10 +1,10 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { InputComponent } from "../components/Input-component";
-import { registerUserSchema, type registerUserType } from "../schemas/register-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { registerUserSchema, type registerUserType } from "../../schemas/register-schema";
+import { Input } from "../../components/Input/Input";
 
-export const RegisterPage = () => {
+export const Register = () => {
   const navigate = useNavigate();
 
   const { handleSubmit, control, formState: { errors } } = useForm<registerUserType>({
@@ -42,7 +42,7 @@ export const RegisterPage = () => {
           </p>
         </div>
 
-        <InputComponent
+        <Input
           control={control}
           error={errors.name}
           label="Nombre"
@@ -50,7 +50,7 @@ export const RegisterPage = () => {
           type="text"
         />
 
-        <InputComponent
+        <Input
           control={control}
           error={errors.email}
           label="Correo"
@@ -58,7 +58,7 @@ export const RegisterPage = () => {
           type="email"
         />
 
-        <InputComponent
+        <Input
           control={control}
           error={errors.password}
           label="Contraseña"
@@ -66,7 +66,7 @@ export const RegisterPage = () => {
           type="password"
         />
 
-        <InputComponent
+        <Input
           control={control}
           error={errors.connfirmPassword}
           label="ConFirm Password"
@@ -74,7 +74,7 @@ export const RegisterPage = () => {
           type="password"
         />
 
-          <InputComponent
+          <Input
           control={control}
           error={errors.role}
           label="Rol"
