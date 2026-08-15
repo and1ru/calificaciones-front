@@ -6,4 +6,4 @@ export const teacherSchema = z.object({
     password: z.string()
 })
 
-export type techerType = z.infer<typeof teacherSchema>
+export type teacherType = z.infer<typeof teacherSchema>
