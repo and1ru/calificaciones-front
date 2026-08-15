@@ -1,7 +1,6 @@
 export function Home () {
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Navbar */}
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <h1 className="text-2xl font-bold text-blue-600">
@@ -26,7 +25,6 @@ export function Home () {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 py-20 lg:flex-row">
         {/* Texto */}
         <div className="flex-1">
@@ -63,7 +61,6 @@ export function Home () {
           </div>
         </div>
 
-        {/* Imagen */}
         <div className="flex flex-1 justify-center">
           <img
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700"
@@ -73,7 +70,6 @@ export function Home () {
         </div>
       </section>
 
-      {/* Características */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center">
@@ -87,7 +83,6 @@ export function Home () {
           </div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {/* Card */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 transition hover:-translate-y-1 hover:shadow-lg">
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100 text-3xl">
                 📚
@@ -138,7 +133,6 @@ export function Home () {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-blue-600 py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h3 className="text-4xl font-bold text-white">
@@ -159,7 +153,6 @@ export function Home () {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-slate-200 bg-white py-8">
         <div className="mx-auto max-w-7xl px-6 text-center text-slate-500">
           © 2026 GradeSystem. Todos los derechos reservados.

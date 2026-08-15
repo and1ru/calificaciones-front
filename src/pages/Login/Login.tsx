@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, type loginType } from "../../schemas/login-schema";
+import { loginSchema, type loginType } from "../../schemas/login";
 import { Input } from "../../components/Input/Input";
 
 
@@ -19,10 +19,6 @@ export const Login = () => {
 
   const handleForm: SubmitHandler<loginType> = (data) => {
     console.log(data);
-  };
-
-  const handleGoToRegister = () => {
-    navigate("/register", { replace: true });
   };
 
   const handleGoToDashboard = () => {
@@ -67,17 +63,6 @@ export const Login = () => {
           Enviar
         </button>
       </form>
-
-      <p className="mt-6 text-sm text-gray-600">
-        Don't have an account?{" "}
-        <button
-          type="button"
-          onClick={handleGoToRegister}
-          className="font-medium text-black underline underline-offset-4 hover:text-gray-700"
-        >
-          Register
-        </button>
-      </p>
     </div>
   );
 };
