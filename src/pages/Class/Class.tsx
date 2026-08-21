@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { teacherGroups } from "../../helper/grupos";
-import { Header } from "../../components/Header/Header";
+import { HeaderActions } from "../../components/HeaderActions/HeaderActions";
 import { CreateGrade } from "../../components/CreateGrade/CreateGrade";
 import { TeacherGrades } from "../../components/TeacherGrades/TeacherGrades";
 
@@ -17,7 +17,7 @@ export const Class = () => {
 
   return (
     <>
-      <Header />
+      <HeaderActions />
       <main className="mx-auto max-w-7xl p-6">
         <div className="mb-8 flex items-center justify-between">
           <div>

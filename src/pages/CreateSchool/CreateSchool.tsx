@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { schoolSchema, type schoolType } from "../../schemas/school";
 import { Input } from "../../components/Input/Input";
-import { Header } from "../../components/Header/Header";
+import { HeaderActions } from "../../components/HeaderActions/HeaderActions";
 
 export const CreateSchool = () => {
     const { handleSubmit, control, formState: { errors } } = useForm<schoolType>({
@@ -19,20 +19,19 @@ export const CreateSchool = () => {
     };
     return (
         <>
-            <Header />
+            <HeaderActions />
             <main>
-                <section>
+                <section className="p-4">
                     <form
                         onSubmit={handleSubmit(handleForm)}
-                        className="w-full max-w-md rounded-xl bg-white p-8 shadow-md space-y-5"
+                        className="w-full max-w-md rounded-xl bg-white p-8 shadow-xl space-y-5 mx-auto"
                     >
-                        <div className="text-center">
-                            <h1 className="text-2xl font-bold text-gray-800">
-                                Create School
-                            </h1>
-                        </div>
-                        <Input control={control} error={errors.adminName} label="Admin Name" name="adminName" type="text" />
+                        <h1 className="text-2xl font-bold text-center">
+                            Create School
+                        </h1>
+
                         <Input control={control} error={errors.schoolName} label="School Name" name="schoolName" type="text" />
+                        <Input control={control} error={errors.adminName} label="Admin Name" name="adminName" type="text" />
                         <Input control={control} error={errors.email} label="Email" name="email" type="email" />
                         <Input control={control} error={errors.password} label="Password" name="password" type="password" />
                         <Input control={control} error={errors.confirmPassword} label="Confirm Password" name="confirmPassword" type="password" />

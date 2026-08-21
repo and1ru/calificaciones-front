@@ -1,11 +1,10 @@
 import { Grades } from "../../components/Grades/Grades";
-import { Header } from "../../components/Header/Header";
-
+import { HeaderActions } from "../../components/HeaderActions/HeaderActions";
 
 export const NotasPage = () => {
   return (
     <>
-    <Header />
+    <HeaderActions />
     <main className="p-8">
       <section>
         <Grades/>

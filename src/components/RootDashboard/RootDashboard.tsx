@@ -1,10 +1,10 @@
-import { Header } from "../Header/Header"
+import { HeaderDashboard } from "../HeaderDashboard/HeaderDashboard"
 import { TargetAction } from "../TargetAction/TargetAction"
 
 export const RootDashboard = () => {
     return (
         <>
-        <Header/>
+        <HeaderDashboard/>
         <main>
             <section>
                 <h1>Wellcome Again, Andrés</h1>

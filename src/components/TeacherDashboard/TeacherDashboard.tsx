@@ -1,10 +1,10 @@
 import { GroupGradeCard } from "../GroupGradeCard/GroupGradeCard"
-import { Header } from "../Header/Header"
+import { HeaderDashboard } from "../HeaderDashboard/HeaderDashboard"
 
 export const TeacherDashboard = () => {
     return (
         <>
-          <Header />
+          <HeaderDashboard />
           <main className="mx-auto max-w-7xl p-6">
             <section className="mb-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
               <h1 className="text-3xl font-bold text-gray-800">

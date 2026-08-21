@@ -6,8 +6,9 @@ import { Login } from "../pages/Login/Login";
 import { Dashboard } from "../pages/Dashboard/Dashboard";
 import { Class } from "../pages/Class/Class";
 import { CreateSchool } from "../pages/CreateSchool/CreateSchool";
-import { CreateTeacher } from "../pages/CreateTeacher/CreateTeacher";
-import { CreateStudent } from "../pages/CreateStudent/CreateStudent";
+import { CreateSubject } from "../pages/CreateSubject/CreateSubject";
+import { CreateGroup } from "../pages/CreateGroup/CreateGroup";
+import { CreateUser } from "../pages/CreateUser/CreateUser";
 
 export const routes = createBrowserRouter([
     {
@@ -39,11 +40,16 @@ export const routes = createBrowserRouter([
                 element: <CreateSchool />
             },
             {
-                path: "create_teacher",
-                element: <CreateTeacher />
-            },            {
-                path: "create_student",
-                element: <CreateStudent />
+                path: "create_user",
+                element: <CreateUser />
+            },
+            {
+                path: "create_subject",
+                element: <CreateSubject />
+            },
+            {
+                path: "create_group",
+                element: <CreateGroup />
             }
         ]
     },

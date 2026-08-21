@@ -1,21 +1,19 @@
-// puede crear un profesor
-// puede crear alumnos
-
+import { HeaderDashboard } from "../HeaderDashboard/HeaderDashboard"
 import { TargetAction } from "../TargetAction/TargetAction"
 
 export const AdminDashboard = () => {
     return (
-        <main>
-            <section>
+        <>
+            <HeaderDashboard />
+            <main>
                 <h1>Wellcome Again, Nombre</h1>
-            </section>
-            <section className="flex gap-5">
-                <TargetAction image="" name="CREATE TEACHER" url=""/>
-                <TargetAction image="" name="CREATE STUDENT" url=""/>
-                <TargetAction image="" name="CREATE SUBJECT" url=""/>
-                <TargetAction image="" name="CREATE GROUP" url=""/>
-                <TargetAction image="" name="LOG OUT" url=""/>
-            </section>
-        </main>
+                <section className="flex gap-5">
+                    <TargetAction image="" name="CREATE USER" url="/private/create_user" />
+                    <TargetAction image="" name="CREATE SUBJECT" url="/private/create_subject" />
+                    <TargetAction image="" name="CREATE GROUP" url="/private/create_group" />
+                </section>
+            </main>
+        </>
+
     )
 }
