@@ -14,7 +14,7 @@ export const TargetAction = ({url, image, name}:Props) => {
 
     return (
         <div className="border w-40 h-40 rounded-lg" onClick={goTo}>
-            <img src={image} alt="" className="h-20 w-full outline mb-3 rounded-t-lg" />
+            <img src={image} alt={`${image} image`} className="h-20 w-full outline mb-3 rounded-t-lg" />
             <h2 className="text-center">{name}</h2>
         </div>
     )

@@ -31,9 +31,6 @@ export const Class = () => {
           </div>
           <CreateGrade/>
         </div>
-
-        {/* asignar un componente para la asistencia */}
-
         <TeacherGrades/>
       </main>
     </>

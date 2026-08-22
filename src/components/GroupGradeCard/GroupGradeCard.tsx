@@ -6,15 +6,15 @@ interface Props {
 }
 
 export const GroupGradeCard = ({ group, subject }: Props) => {
-      const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    function handleClick(){
-      navigate("/private/clase/1", {replace:true})
-    }
+  function handleClick() {
+    navigate("/private/clase/1", { replace: true })
+  }
   return (
-    <div 
-    onClick={handleClick}
-    className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+    <div
+      onClick={handleClick}
+      className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
       <div className="space-y-2">
         <p className="text-gray-600">
           <span className="font-medium text-gray-800">Grupo:</span> {group}

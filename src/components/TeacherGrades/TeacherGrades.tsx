@@ -40,7 +40,7 @@ export const TeacherGrades = () => {
                     {estudiantesFilter.map((estudiante) => (
                         <tr
                             key={estudiante.id}
-                            className="hover:bg-gray-50"
+                            
                         >
                             <td className="border-b px-4 py-3 font-medium">
                                 {estudiante.nombre}
@@ -49,7 +49,7 @@ export const TeacherGrades = () => {
                             {estudiante.notas.map((nota) => (
                                 <td
                                     key={nota.title}
-                                    className="border-b px-4 py-3 text-center"
+                                    className="border-b px-4 py-3 text-center hover:bg-gray-600"
                                 >
                                     {nota.nota}
                                 </td>

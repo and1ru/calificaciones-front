@@ -6,14 +6,8 @@ export const estudiantes = [
         nombre: "Andrés",
         id_grupo: 1,
         notas: [
-                        { title: "Nota 1", nota: 4.5 },
-            { title: "Examen Final", nota: 3.8 },
             { title: "Nota 1", nota: 4.5 },
             { title: "Examen Final", nota: 3.8 },
-            { title: "Nota 1", nota: 4.5 },
-            { title: "Examen Final", nota: 3.8 },
-            { title: "Nota 1", nota: 4.5 },
-            { title: "Examen Final", nota: 3.8 }
         ]
     },
     {
