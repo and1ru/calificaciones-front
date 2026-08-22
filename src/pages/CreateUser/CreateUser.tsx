@@ -4,14 +4,16 @@ import { HeaderActions } from "../../components/HeaderActions/HeaderActions"
 import { Input } from "../../components/Input/Input"
 import { Select } from "../../components/Select/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useCreateUser } from "../../customHooks/useCreateUser/useCreateUser"
 
 export const CreateUser = () => {
+  const { createUser, error, loading } = useCreateUser()
   const { control, handleSubmit, formState: { errors } } = useForm<userType>({
     defaultValues:{
       email:"",
       name:"",
       password:"",
-      role:"studen"
+      role:"student"
     },
     mode: "onBlur",
     resolver: zodResolver(userSchema)
@@ -19,6 +21,7 @@ export const CreateUser = () => {
 
   const handleForm:SubmitHandler<userType> = (body) => {
     console.log(body)
+    createUser(body)
   }
 
   return (
@@ -38,6 +41,8 @@ export const CreateUser = () => {
             <button className="bg-gray-700 w-full p-2 text-white font-bold rounded-lg">SEND</button>
           </form>
         </section>
+        { loading && <p>loading</p>}
+        { error && <p>error</p>}
       </main>
     </>
   )
