@@ -7,10 +7,11 @@ interface props {
 
 interface Auth{
     role: string
+    name:string
 }
 
 export const AuthProvider = ({children}:props) => {
-    const [auth, setAuth] = useState<Auth>({role:""})
+    const [auth, setAuth] = useState<Auth>({role:"", name:""})
     return(
         <AuthContext.Provider value={{auth, setAuth}}>
             {children}

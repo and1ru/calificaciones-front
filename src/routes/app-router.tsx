@@ -10,6 +10,7 @@ import { CreateSubject } from "../pages/CreateSubject/CreateSubject";
 import { CreateGroup } from "../pages/CreateGroup/CreateGroup";
 import { CreateUser } from "../pages/CreateUser/CreateUser";
 import { CreateBranch } from "../pages/CreateBranch/CreateBranch";
+import { AssignGroup } from "../pages/AssignGroup/AssignGroup";
 
 export const routes = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const routes = createBrowserRouter([
             {
                 path: "create_branch",
                 element: <CreateBranch />
+            },
+            {
+                path: "assign_group",
+                element: <AssignGroup />
             }
         ]
     },

@@ -41,8 +41,8 @@ export const CreateUser = () => {
             <button className="bg-gray-700 w-full p-2 text-white font-bold rounded-lg">SEND</button>
           </form>
         </section>
-        { loading && <p>loading</p>}
-        { error && <p>error</p>}
+        { loading && <p>loading</p> }
+        { error && <p>error</p> }
       </main>
     </>
   )

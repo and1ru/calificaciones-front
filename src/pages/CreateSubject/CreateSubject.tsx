@@ -3,8 +3,10 @@ import { HeaderActions } from "../../components/HeaderActions/HeaderActions";
 import { subjectSchema, type subjectType } from "../../schemas/subject";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../components/Input/Input";
+import { useCreateSubject } from "../../customHooks/useCreateSubject/useCreateSubject";
 
 export const CreateSubject = () => {
+  const {createSubject, error, loading} = useCreateSubject()
   const { control, handleSubmit, formState:{errors}} = useForm<subjectType>({
     defaultValues:{
       subjectName: ""
@@ -13,8 +15,9 @@ export const CreateSubject = () => {
     resolver: zodResolver(subjectSchema)
   })
 
-  const handleForm:SubmitHandler<subjectType> = (data) => {
-    console.log(data)
+  const handleForm:SubmitHandler<subjectType> = (body) => {
+    console.log(body)
+    createSubject(body)
   }
 
   return (
@@ -28,6 +31,8 @@ export const CreateSubject = () => {
             <button className="bg-gray-700 w-full p-2 text-white font-bold rounded-lg">SEND</button>
           </form>
         </section>
+        { loading && <p>loading</p> }
+        { error && <p>error</p> }
       </main>
     </>
   );

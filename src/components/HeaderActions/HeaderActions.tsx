@@ -19,9 +19,9 @@ export const HeaderActions = () => {
             <button onClick={handleBack}>{"<-"}</button>
           </li>
           <li>
-            <h1 className="text-lg font-bold text-gray-800">
+            <h2 className="text-lg font-bold text-gray-800">
               Gestor de Estudios
-            </h1>
+            </h2>
           </li>
           <li>
             <button

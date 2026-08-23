@@ -1,9 +1,13 @@
 import { useGet } from "../useGet"
 
+interface Auth{
+    role:string;
+    name:string
+}
 interface Response {
     success:boolean;
     message:string;
-    role: string
+    auth:Auth
 }
 
 export const useAuth = () => {

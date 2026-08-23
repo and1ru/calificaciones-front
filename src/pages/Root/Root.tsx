@@ -9,7 +9,7 @@ export const RootPage = () => {
 
     useEffect(()=> {
         if(data?.success){
-            setAuth({role:data.role})
+            setAuth({role:data.auth.role, name:data.auth.name})
         }
     },[data])
 

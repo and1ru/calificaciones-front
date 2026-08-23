@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 
 interface Auth{
     role: string
+    name: string
 }
 
 interface AuthContext {
