@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 interface Props {
   group: string;
   subject: string;
+  id:number
 }
 
-export const GroupGradeCard = ({ group, subject }: Props) => {
+export const GroupGradeCard = ({ group, subject, id }: Props) => {
   const navigate = useNavigate()
 
   function handleClick() {
-    navigate("/private/clase/1", { replace: true })
+    navigate(`/private/clase/${id}`, { replace: true })
   }
   return (
     <div

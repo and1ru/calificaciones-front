@@ -11,6 +11,7 @@ export const useGet = <TResponse>(url:string) => {
         setLoading(true)
         try {
             const request = await apiClient.get(url)
+            console.log(request.data)
             setData(request.data)
         } catch (error) {
             setError(error)

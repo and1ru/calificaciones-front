@@ -1,11 +1,15 @@
+import { AssignProvider } from "./context/AssignContext/AssignProvider";
 import { AuthProvider } from "./context/AuthContext/AuthProvider";
 import { AppRouterProvider } from "./routes/app-router-provider";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <AppRouterProvider/>
-    </AuthProvider>
+    <AssignProvider>
+      <AuthProvider>
+        <AppRouterProvider />
+      </AuthProvider>
+    </AssignProvider>
+
   );
 };
 

@@ -1,9 +1,14 @@
 import { useAuthContext } from "../../context/AuthContext/AuthContext"
+import { useGetGroupsTeacher } from "../../customHooks/useGetGroupsTeacher/useGetGroupsTeacher"
 import { GroupGradeCard } from "../GroupGradeCard/GroupGradeCard"
 import { HeaderDashboard } from "../HeaderDashboard/HeaderDashboard"
 
 export const TeacherDashboard = () => {
     const { auth } = useAuthContext()
+    const { data, loading, error } = useGetGroupsTeacher()
+
+    if(loading) return <p>loading</p>
+    if(error) return <p>error</p>
     return (
         <>
           <HeaderDashboard />
@@ -28,12 +33,10 @@ export const TeacherDashboard = () => {
                 </h2>
               </div>
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                <GroupGradeCard group="11-1" subject="Matematicas"/>
-                <GroupGradeCard group="11-1" subject="Matematicas"/>
-                <GroupGradeCard group="11-1" subject="Matematicas"/>
-                <GroupGradeCard group="11-1" subject="Matematicas"/>
+                { data?.result.map((element) => (
+                  <GroupGradeCard key={element.group_subject_id} id={element.group_subject_id} group={element.group.group_name} subject={element.suject.subject_name}/>
+                ))}
               </div>
-              
             </section>
           </main>
         </>
