@@ -14,9 +14,9 @@ export const TeacherDashboard = () => {
           <HeaderDashboard />
           <main className="mx-auto max-w-7xl p-6">
             <section className="mb-8 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <h1 className="text-3xl font-bold text-gray-800">
-                Bienvenido, {auth.name}
-              </h1>
+              <h2 className="text-3xl font-bold text-gray-800">
+                Welcome Agian, {auth.name}
+              </h2>
     
               <div className="mt-4 space-y-2 text-gray-600">
                 <p>

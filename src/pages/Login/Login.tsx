@@ -5,6 +5,7 @@ import { loginSchema, type loginType } from "../../schemas/login";
 import { Input } from "../../components/Input/Input";
 import { useLogin } from "../../customHooks/useLogin/useLogin";
 import { useEffect } from "react";
+import { Error } from "../../components/Error/Error";
 
 
 export const Login = () => {
@@ -33,6 +34,7 @@ export const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+      { error && <Error error={true}><p>Something went wrong trying to login</p></Error>}
       <form
         onSubmit={handleSubmit(handleForm)}
         className="w-full max-w-md rounded-xl bg-white p-8 shadow-md space-y-5"
@@ -47,11 +49,12 @@ export const Login = () => {
         </div>
         <Input control={control} error={errors.email} label="Correo" name="email" type="email"/>
         <Input control={control} error={errors.password} label="Contraseña" name="password" type="password"/>
-        <button className="w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800">
+        <button 
+          disabled={loading}
+          className={`w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800 ${ loading && "cursor-not-allowed"}`}>
           Enviar
         </button>
       </form>
-      { loading && <p>loading</p>}
       { error && <p>error</p>}
     </div>
   );

@@ -1,14 +1,14 @@
 import { useGet } from "../useGet"
 
 interface Group{
-    group_id: number;
-    group_name: string;
+    id: number;
+    name: string;
     branch_id: number;
 }
 
 interface Branch{
-    branch_name: string;
-    branch_id:number
+    name: string;
+    id:number
     groups: Group[]
 }
 

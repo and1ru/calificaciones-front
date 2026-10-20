@@ -15,6 +15,7 @@ export const useAction = <TResponse>():UseAction<TResponse> => {
     const [error, setError] = useState<AxiosError | null>(null)
 
     const action = async (fn: () => Promise<AxiosResponse<TResponse>>):Promise<void> => {
+        setData(null)
         setError(null)
         setLoading(true)
         try {

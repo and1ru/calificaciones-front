@@ -1,23 +1,4 @@
-// root -> andres
-// mejorar los estilos del dashboard
-// mensaje de error para los inputs
-// confirm password que funcione
-// mensaje de que se creo la escuela y reiniciar a valores por defecto
-
 // admin -> samuel
-// mejorar los estilos del dashboard
-// mensajes de error de input en create branch
-// mensaje de que se creo la branch
-// se reinicia los valores de branch si es exitoso
-// mensajes de error de input en create user
-// mensaje de que se creo el user
-// se reinician los valores en caso de que sea exitoso
-// mensaje de que se creo el subject
-// se reinician los valores en caso de que sea exitoso
-// mensaje de input para el subject
-// mensaje de error para el input de create group
-// mensaje de que se creo correctamente el group
-// que se reinicien los valores si todo sale bien
 // asignar estudiantes, profesores y materias
 // poder editar los grupos
 

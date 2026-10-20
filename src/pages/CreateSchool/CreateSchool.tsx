@@ -4,29 +4,42 @@ import { schoolSchema, type schoolType } from "../../schemas/school";
 import { Input } from "../../components/Input/Input";
 import { HeaderActions } from "../../components/HeaderActions/HeaderActions";
 import { useCreateSchool } from "../../customHooks/useCreateSchool/useCreateSchool";
+import { Successfully } from "../../components/Successfully/Successfully";
+import { Error } from "../../components/Error/Error";
+import { useEffect } from "react";
+
+const defaultValues = {
+    adminName: "",
+    confirmPassword: "",
+    schoolAddress: "",
+    schoolCity: "",
+    schoolName: "",
+    email: "",
+    password: "",
+}
 
 export const CreateSchool = () => {
-    const { createSchool, loading, error } = useCreateSchool()
-    const { handleSubmit, control, formState: { errors } } = useForm<schoolType>({
+    const { createSchool, loading, error, data } = useCreateSchool()
+    const { handleSubmit, control, formState: { errors }, reset } = useForm<schoolType>({
         mode: "onBlur",
-        defaultValues: {
-            adminName:"",
-            confirmPassword: "",
-            schoolAddress: "",
-            schoolCity: "",
-            schoolName: "",
-            email: "",
-            password: "",
-        },
+        defaultValues,
         resolver: zodResolver(schoolSchema)
     });
 
     const handleForm: SubmitHandler<schoolType> = (body) => {
-        console.log(body);
         createSchool(body)
     };
+
+    useEffect(()=> {
+        if(data?.success){
+            reset()
+        }
+    },[data?.success])
+
     return (
         <>
+            {error && <Error error={true}><p>Something went wrong trying to create the school</p></Error>}
+            {data?.success && <Successfully successfully={true}><p>school was created</p></Successfully>}
             <HeaderActions />
             <main>
                 <section className="p-4">
@@ -46,17 +59,16 @@ export const CreateSchool = () => {
                         <Input control={control} error={errors.password} label="Password" name="password" type="password" />
                         <Input control={control} error={errors.confirmPassword} label="Confirm Password" name="confirmPassword" type="password" />
 
-                        <button type="submit"
-                            className="w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800"
+                        <button
+                            disabled={loading}
+                            type="submit"
+                            className={`w-full rounded-lg bg-black py-3 font-medium text-white transition hover:bg-gray-800 ${loading && "cursor-not-allowed"}`}
                         >
                             Enviar
                         </button>
                     </form>
-                    { loading && <p>loading</p>}
-                    { error && <p>error</p>}
                 </section>
             </main>
         </>
-
     );
 };

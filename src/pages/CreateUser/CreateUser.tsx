@@ -5,31 +5,41 @@ import { Input } from "../../components/Input/Input"
 import { Select } from "../../components/Select/Select"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useCreateUser } from "../../customHooks/useCreateUser/useCreateUser"
+import { Successfully } from "../../components/Successfully/Successfully"
+import { Error } from "../../components/Error/Error"
+import { useEffect } from "react"
 
 export const CreateUser = () => {
-  const { createUser, error, loading } = useCreateUser()
-  const { control, handleSubmit, formState: { errors } } = useForm<userType>({
-    defaultValues:{
-      email:"",
-      name:"",
-      password:"",
-      role:"student"
+  const { createUser, error, loading, data } = useCreateUser()
+  const { control, handleSubmit, formState: { errors }, reset } = useForm<userType>({
+    defaultValues: {
+      email: "",
+      name: "",
+      password: "",
+      role: "student"
     },
     mode: "onBlur",
     resolver: zodResolver(userSchema)
   })
 
-  const handleForm:SubmitHandler<userType> = (body) => {
-    console.log(body)
+  const handleForm: SubmitHandler<userType> = (body) => {
     createUser(body)
   }
 
+  useEffect(()=> {
+    if(data?.success){
+      reset()
+    }
+  },[data?.success])
+
   return (
     <>
+      {error && <Error error={true}><p>¡ops! Something went wrong trying to create the user</p></Error>}
+      {data?.success && <Successfully successfully={true}><p>User was created successfully</p></Successfully>}
       <HeaderActions />
       <main>
-        <section className="w-100 shadow-xl p-5 rounded-lg mx-auto mt-20">
-          <h1 className="text-xl font-bold text-center mb-10">CREATE USER</h1>
+        <section className="w-110 shadow-xl p-7  rounded-lg mx-auto my-10">
+          <h2 className="text-xl font-bold text-center mb-10">CREATE USER</h2>
           <form className="flex flex-col gap-5" onSubmit={handleSubmit(handleForm)}>
             <Input control={control} label="Name" name="name" type="text" error={errors.name} />
             <Input control={control} label="Email" name="email" type="email" error={errors.email} />
@@ -38,11 +48,11 @@ export const CreateUser = () => {
               <option value="student">Student</option>
               <option value="teacher" >Teacher</option>
             </Select>
-            <button className="bg-gray-700 w-full p-2 text-white font-bold rounded-lg">SEND</button>
+            <button
+              disabled={loading}
+              className={`bg-gray-700 w-full p-2 text-white font-bold rounded-lg ${loading && "cursor-not-allowed"}`}>SEND</button>
           </form>
         </section>
-        { loading && <p>loading</p> }
-        { error && <p>error</p> }
       </main>
     </>
   )
